@@ -8,14 +8,33 @@ class ModuleTypes extends Component{
     }
 
     render() {
+        const { moduleTypesArray } = this.props
+
+        const renderOptions = options => {
+            console.log('options ', options);
+          return options.map(option => {
+            return (
+              <option key={option.id} value={option.id}>
+                {option.name}
+              </option>
+            );
+          });
+        };
+
         return(
             <div>
                 <label>Тип модулей</label>
                 <Form.Control
                     as="select"
-                    value="test"
                 >
-                    <option value={"Value 1"}>Value 1</option>
+                {
+                    moduleTypesArray.map( item => {
+                        return (
+                            <optgroup key={item.id} label={item.groupName}>
+                                {renderOptions(item.items)}
+                            </optgroup>
+                    )} )
+                }
                 </Form.Control>
             </div>
         )
