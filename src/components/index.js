@@ -1,4 +1,6 @@
 import ModuleTypes from './moduleTypes/moduleTypes'
+import SizeOfScreen from './sizeOfScreen/sizeOfScreen'
+import InputWithBtns from './inputWithBtns/inputWithBtns'
 
 
-export {ModuleTypes}
+export {ModuleTypes, SizeOfScreen, InputWithBtns}

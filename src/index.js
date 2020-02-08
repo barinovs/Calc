@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import {ModuleTypes} from './components'
+import {SizeOfScreen} from './components'
 
 const moduleTypesArray = [
     {
@@ -36,7 +37,7 @@ class App extends Component {
             <Container>
               <Row>
                 <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray}/></Col>
-                <Col lg="3">1 of 2</Col>
+                <Col lg="3"><SizeOfScreen /></Col>
                 <Col lg="2">1 of 2</Col>
                 <Col lg="2">1 of 2</Col>
                 <Col lg="2">1 of 2</Col>
