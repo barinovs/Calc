@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col'
 
 import {ModuleTypes} from './components'
 import {SizeOfScreen} from './components'
+import {TypeOfControl} from './components'
 
 const moduleTypesArray = [
     {
@@ -31,6 +32,54 @@ const moduleTypesArray = [
     },
 ]
 
+const typesOfControl1 = [
+    {
+        id: 1,
+        name: 'USB',
+        note: '',
+        value: 'USB'
+    },
+    {
+        id: 2,
+        name: 'Ethernet',
+        note: '',
+        value: 'ETHERNET'
+    },
+    {
+        id: 3,
+        name: 'WI-FI',
+        note: '',
+        value: 'WI-FI'
+    },
+    {
+        id: 4,
+        name: 'COM(RS232)',
+        note: '',
+        value: 'RS232'
+    }
+]
+
+const typesOfControl2 = [
+    {
+        id: 1,
+        name: 'Медиаплеер',
+        note: '',
+        value: 'offline'
+    },
+    {
+        id: 2,
+        name: 'Синхронный',
+        note: '(нужен компьютер)',
+        value: 'online'
+    },
+    {
+        id: 3,
+        name: 'Видеопроцессор',
+        note: '',
+        value: 'proc'
+    }
+]
+
 class App extends Component {
     render() {
         return(
@@ -38,7 +87,7 @@ class App extends Component {
               <Row>
                 <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray}/></Col>
                 <Col lg="3"><SizeOfScreen /></Col>
-                <Col lg="2">1 of 2</Col>
+                <Col lg="2"><TypeOfControl typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
                 <Col lg="2">1 of 2</Col>
                 <Col lg="2">1 of 2</Col>
               </Row>

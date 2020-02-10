@@ -1,0 +1,12 @@
+.control{
+    display: block;
+    position: relative;
+    padding-left: 29px;
+    margin-bottom: 3px;
+    padding-top: 0px;
+    cursor: pointer;
+}
+
+input:not(.btn) {
+    line-height: 20px;
+}

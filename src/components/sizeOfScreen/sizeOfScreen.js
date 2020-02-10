@@ -13,13 +13,16 @@ class SizeOfScreen extends Component{
 
     render() {
         return(
-            <div>Размер экрана
+            <div>
+                <label>Размер экрана</label>
                 <Row>
                     <Col lg="6">
                         <InputWithBtns koef={0.32}/>
+                        <div>Ширина</div>
                     </Col>
                     <Col lg="6">
                         <InputWithBtns koef={0.16}/>
+                        <div>Высота</div>
                     </Col>
                 </Row>
 
