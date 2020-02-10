@@ -26,14 +26,14 @@ class InputWithBtns extends Component{
     }
 
     updateText(mod) {
-        let inpText = ""
+        let inpText = String(this.props.koef.toFixed(3))
         if (mod > 0) {
             inpText = (mod * this.props.koef).toFixed(3)
             this.setState( state => {
                 return {inpText: inpText}
             })
         }else{
-            inpText = "доделать"
+            // inpText = "доделать"
         }
         this.input.current.value = inpText
     }
