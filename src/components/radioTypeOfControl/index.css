@@ -10,3 +10,38 @@
 input:not(.btn) {
     line-height: 20px;
 }
+
+.form-check-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.control_indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background: #ffffff;
+    border: 1px solid #107bb1;
+    border-radius: 3px;
+}
+
+.radio.control_indicator {
+    border-radius: 50%;
+}
+
+.control_indicator:before {
+    left: 6px;
+    top: 6px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
