@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 import './index.css'
 
 class InputWithBtns extends Component{
@@ -15,7 +14,7 @@ class InputWithBtns extends Component{
 
         this.increaseMod = this.increaseMod.bind(this)
         this.decreaseMod = this.decreaseMod.bind(this)
-        this.updateText = this.updateText.bind(this)
+        this.updateText  = this.updateText.bind(this)
         this.changeInpText = this.changeInpText.bind(this)
     }
 
@@ -45,7 +44,7 @@ class InputWithBtns extends Component{
         } )
 
         this.updateText(mod)
-
+        this.props.setValue(this.props.dType, mod)
     }
 
     decreaseMod() {
@@ -59,6 +58,7 @@ class InputWithBtns extends Component{
 
         } )
         this.updateText(mod)
+        this.props.setValue(this.props.dType, mod)
     }
 
     render() {

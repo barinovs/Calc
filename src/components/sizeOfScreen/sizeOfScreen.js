@@ -17,11 +17,11 @@ class SizeOfScreen extends Component{
                 <label>Размер экрана</label>
                 <Row>
                     <Col lg="6">
-                        <InputWithBtns koef={0.32}/>
+                        <InputWithBtns koef={0.32} setValue={this.props.setValue} dType='w'/>
                         <div>Ширина</div>
                     </Col>
                     <Col lg="6">
-                        <InputWithBtns koef={0.16}/>
+                        <InputWithBtns koef={0.16} setValue={this.props.setValue} dType='h'/>
                         <div>Высота</div>
                     </Col>
                 </Row>

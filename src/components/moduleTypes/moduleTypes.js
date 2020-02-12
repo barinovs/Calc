@@ -26,6 +26,7 @@ class ModuleTypes extends Component{
                 <label>Тип модулей</label>
                 <Form.Control
                     as="select"
+                    onChange={ e => {this.props.setValue('mod_id', e.target.value)} }
                 >
                 {
                     moduleTypesArray.map( item => {

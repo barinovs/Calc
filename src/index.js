@@ -119,12 +119,44 @@ const sensors = [
 ]
 
 class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            formData: {
+                mod_id: '',
+                w: '',
+                h: ''
+            }
+        }
+        this.setValue = this.setValue.bind(this)
+
+    }
+
+    setValue(dType, value) {
+        console.log('dType ', dType);
+        console.log('value ', value);
+        // let formData = this.state.formData
+        // formData.mod_id = id
+        // this.setState({formData})
+        switch (dType) {
+            case 'mod_id':
+                this.setState({ formData: { ...this.state.formData, mod_id: value} });
+                break
+            case 'w':
+                this.setState({ formData: { ...this.state.formData, w: value} });
+                break
+            case 'h':
+                this.setState({ formData: { ...this.state.formData, h: value} });
+                break
+        }
+    }
+
     render() {
         return(
             <Container>
               <Row>
-                <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray}/></Col>
-                <Col lg="3"><SizeOfScreen /></Col>
+                <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray} setValue={this.setValue}/></Col>
+                <Col lg="3"><SizeOfScreen setValue={this.setValue}/></Col>
                 <Col lg="2"><TypeOfControl typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
                 <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
                 <Col lg="2"><Sensors sensors={sensors}/></Col>
