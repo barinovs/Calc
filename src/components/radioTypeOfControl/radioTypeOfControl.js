@@ -12,7 +12,9 @@ const Indicator = styled.div`
     height: 19px;
     width: 19px;
     border-radius: 50%;
-    border: ${ props => props.boldForEl ? '2px solid #107bb1' : '1px solid #107bb1'}
+    cursor: pointer;
+    border: ${ props => props.boldForEl ? '2px solid #107bb1' : '1px solid #107bb1'};
+
     /* &:hover {
         border: 3px solid #107bb1;
     } */
@@ -84,20 +86,25 @@ class RadioTypeOfControl extends Component {
                                     key={item.id}
                                   >
                                     <Form.Check.Input
-                                      type="radio"
-                                      value={item.value}
-                                      checked={item.value == this.state.value}
-                                      onChange={ () => {} }
-                                      className="control"
-                                      id="t"
+                                      type = "radio"
+                                      value = {item.value}
+                                      checked = {item.value == this.state.value}
+                                      onChange = { () => {} }
+                                      className = "control"
+                                      id = "t"
                                     />
                                     <Form.Check.Label htmlFor="t"
-                                        id={item.value}
+                                        id = {item.value}
                                         onClick = { (e) => this._change(e.target.id)}
-                                        onMouseEnter={ (e) => {
+                                        onMouseEnter = { (e) => {
                                                 this.setBold(e.target.id)
                                             }
                                         }
+                                        onMouseOut = { (e) => {
+                                                this.setBold('')
+                                            }
+                                        }
+                                        style = {{'cursor':'pointer'}}
                                     >
                                         {item.name}
                                     </Form.Check.Label>
