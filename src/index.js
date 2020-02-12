@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col'
 import {ModuleTypes} from './components'
 import {SizeOfScreen} from './components'
 import {TypeOfControl} from './components'
+import {ControllerComponent} from './components'
 
 const moduleTypesArray = [
     {
@@ -80,6 +81,21 @@ const typesOfControl2 = [
     }
 ]
 
+const typesOfControllers = [
+    {
+        id: 1,
+        name: 'Внутренний',
+        note: '',
+        value: 'inner'
+    },
+    {
+        id: 2,
+        name: 'Внешний',
+        note: '(отдельный бокс)',
+        value: 'outer'
+    },
+]
+
 class App extends Component {
     render() {
         return(
@@ -88,7 +104,7 @@ class App extends Component {
                 <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray}/></Col>
                 <Col lg="3"><SizeOfScreen /></Col>
                 <Col lg="2"><TypeOfControl typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
-                <Col lg="2">1 of 2</Col>
+                <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
                 <Col lg="2">1 of 2</Col>
               </Row>
               <Row>
