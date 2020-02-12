@@ -13,7 +13,7 @@ const Indicator = styled.div`
     width: 19px;
     border: 1px solid #107bb1;
     border-radius: 50%;
-    
+
 `
 const IndicatorWithAfter = styled.div`
     position: absolute;
@@ -48,7 +48,6 @@ class RadioTypeOfControl extends Component {
     }
 
     _change(value) {
-        console.log(value);
         this.setState({value})
     }
 
@@ -73,18 +72,21 @@ class RadioTypeOfControl extends Component {
                                     type="radio"
                                     id="t"
                                     key={item.id}
-
-
-
                                   >
                                     <Form.Check.Input
                                       type="radio"
                                       value={item.value}
                                       checked={item.value == this.state.value}
-                                      onChange={ (e) => this._change(e.target.value) }
+                                      onChange={ () => {} }
                                       className="control"
+                                      id="t"
                                     />
-                                    <Form.Check.Label htmlFor="t">{item.name}</Form.Check.Label>
+                                    <Form.Check.Label htmlFor="t"
+                                        id={item.value}
+                                        onClick = { (e) => this._change(e.target.id)}
+                                    >
+                                        {item.name}
+                                    </Form.Check.Label>
                                     {(item.value == this.state.value) ? <IndicatorWithAfter /> :<Indicator /> }
 
                                   </Form.Check>
