@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled, { css }  from 'styled-components';
 
 import Form from 'react-bootstrap/Form'
+import CheckboxComponent from '../checkboxComponent/checkboxComponent'
 
 import './index.css'
 
@@ -53,6 +54,7 @@ class CheckboxGroup extends Component {
 
         this._change = this._change.bind(this)
         this.setBold = this.setBold.bind(this)
+        this.changeCheck = this.changeCheck.bind(this)
     }
 
     _change(id, _checked, _this) {
@@ -74,6 +76,23 @@ class CheckboxGroup extends Component {
         })
     }
 
+    changeCheck(id, checked) {
+        console.log('checked ', checked);
+
+        let { selectedValues } = this.state
+        if (checked) {
+            selectedValues = [...selectedValues, ...id]
+        }else{
+            selectedValues = selectedValues.filter( item => item !== id )
+        }
+
+
+        // console.log(selectedValues);
+
+        this.setState({selectedValues})
+        console.log(selectedValues);
+    }
+
     render() {
         let {typesOfControl} = this.props
         typesOfControl = typesOfControl.map( item => {
@@ -83,64 +102,18 @@ class CheckboxGroup extends Component {
 
         return(
             <div style={{display: 'block'}}>
-                <Form>
+
                     {
                         typesOfControl.map( (item) => {
                             return (
-
-                                  <Form.Check
-                                    type="checkbox"
-                                    id="t"
-                                    key={item.id}
-                                  >
-                                    <Form.Check.Input
-                                      type = "checkbox"
-                                      value = {item.value}
-                                      checked = {item.checked}
-                                      onChange = { () => {} }
-                                      className = "control"
-                                      id = "t"
-                                    />
-                                    <Form.Check.Label htmlFor="t"
-                                        id = {item.value}
-                                        checked={false}
-                                        onClick = { (e) => this._change(e.target.id, e.target.checked, this)}
-                                        onMouseEnter = { (e) => {
-                                                this.setBold(e.target.id)
-                                            }
-                                        }
-                                        onMouseOut = { (e) => {
-                                                this.setBold('')
-                                            }
-                                        }
-                                        style = {{'cursor':'pointer'}}
-                                    >
-                                        {item.name}
-                                    </Form.Check.Label>
-                                    {(item.value == this.state.value)
-                                        ? <IndicatorWithAfter />
-                                        : <Indicator
-                                            boldForEl = {item.value == this.state.boldForEl}
-                                            id={item.value}
-                                            onMouseEnter={(e) => {
-                                                e.target.classList.add('bold-ring')
-                                                console.log(e.target.classList)
-                                            }
-                                            }
-                                            onMouseOut={(e) => {
-                                                e.target.classList.remove('bold-ring')
-                                                console.log(e.target.classList)
-                                            }
-                                            }
-                                            onClick={ (e) => this._change(e.target.id)}
-                                          />
-                                      }
-
-                                  </Form.Check>
+                                <div className="form-check">
+                                    <label>{item.name}</label>
+                                    <CheckboxComponent changeCheck = {this.changeCheck} id={item.id}/>
+                                </div>
                             )
                         })
                     }
-                </Form>
+
 
             </div>
         )
