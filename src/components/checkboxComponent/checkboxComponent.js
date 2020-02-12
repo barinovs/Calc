@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled, { css }  from 'styled-components';
 
-// import './index.css'
+import './index.css'
 
 const Indicator = styled.div`
     position: absolute;
@@ -70,6 +70,7 @@ class CheckboxComponent extends Component{
                                         this.changeSelf()
                                      }}
                     id = {this.props.id}
+                    className="dis"
                 />
             )
         }

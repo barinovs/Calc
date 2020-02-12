@@ -102,19 +102,22 @@ const sensors = [
         id: 1,
         name: 'Температура',
         note: '',
-        value: 'temp'
+        value: 'temp',
+        enabled: false
     },
     {
         id: 2,
         name: 'Влажность',
         note: '',
-        value: 'wet'
+        value: 'wet',
+        enabled: false
     },
     {
         id: 3,
         name: 'Яркость',
         note: '',
-        value: 'bright'
+        value: 'bright',
+        enabled: false
     },
 ]
 
