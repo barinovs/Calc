@@ -70,7 +70,6 @@ class CheckboxComponent extends Component{
                                         this.changeSelf()
                                      }}
                     id = {this.props.id}
-                    className="dis"
                 />
             )
         }
