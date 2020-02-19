@@ -55,6 +55,7 @@ class RadioTypeOfControl extends Component {
 
     _change(value) {
         this.setState({value})
+        this.props.setValue(this.props.valueType, value)
     }
 
     setBold(el) {
