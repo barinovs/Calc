@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import OptionComponent from '../optionComponent/optionComponent'
+
 import Form from 'react-bootstrap/Form'
 
 class ModuleTypes extends Component{
@@ -11,12 +13,9 @@ class ModuleTypes extends Component{
         const { moduleTypesArray } = this.props
 
         const renderOptions = options => {
-            console.log('options ', options);
           return options.map(option => {
             return (
-              <option key={option.id} value={option.id}>
-                {option.name}
-              </option>
+              <OptionComponent key={option.id} option={option}/>
             );
           });
         };

@@ -6,10 +6,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import {ModuleTypes} from './components'
+import {ExecutionTypesComponent} from './components'
 import {SizeOfScreen} from './components'
 import {TypeOfControl} from './components'
 import {ControllerComponent} from './components'
 import {Sensors} from './components'
+import {CheckboxComponent} from './components'
 
 const moduleTypesArray = [
     {
@@ -32,6 +34,24 @@ const moduleTypesArray = [
             {id:702, name: "P6.66-Q SMD 5500 (320 x 160) QIANGLI"}
         ]
     },
+]
+
+const executionTypesArray = [
+    {
+        id: '1',
+        name: 'Монолитный',
+        value: 'mono'
+    },
+    {
+        id: '2',
+        name: 'Кабинет 960x960',
+        value: '307'
+    },
+    {
+        id: '3',
+        name: 'Кабинет 640x640',
+        value: '306'
+    }
 ]
 
 const typesOfControl1 = [
@@ -162,8 +182,14 @@ class App extends Component {
         return(
             <Container>
               <Row>
-                <Col lg="3"><ModuleTypes moduleTypesArray={moduleTypesArray} setValue={this.setValue}/></Col>
-                <Col lg="3"><SizeOfScreen setValue={this.setValue}/></Col>
+                <Col lg="3">
+                    <ModuleTypes moduleTypesArray={moduleTypesArray} setValue={this.setValue}/>
+                    <ExecutionTypesComponent executionTypesArray={executionTypesArray} setValue={this.setValue}/>
+                </Col>
+                <Col lg="3">
+                    <SizeOfScreen setValue={this.setValue}/>
+                    <CheckboxComponent />
+                </Col>
                 <Col lg="2"><TypeOfControl setValue={this.setValue} typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
                 <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
                 <Col lg="2"><Sensors sensors={sensors}/></Col>
@@ -172,6 +198,7 @@ class App extends Component {
                 <Col>1 of 3</Col>
                 <Col>2 of 3</Col>
                 <Col>3 of 3</Col>
+
               </Row>
             </Container>
         )
