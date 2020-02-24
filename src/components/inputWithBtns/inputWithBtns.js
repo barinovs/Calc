@@ -18,6 +18,13 @@ class InputWithBtns extends Component{
         this.changeInpText = this.changeInpText.bind(this)
     }
 
+    componentDidMount() {
+        this.setState({
+            mod: this.props.mod
+        });
+        this.updateText(this.props.mod)
+    }
+
     changeInpText(textInp) {
         console.log('textInp ', textInp);
         let mod = (textInp / this.props.koef).toFixed()
@@ -44,11 +51,12 @@ class InputWithBtns extends Component{
         } )
 
         this.updateText(mod)
-        this.props.setValue(this.props.dType, mod)
+        this.props.setValue(mod)
     }
 
     decreaseMod() {
         let mod = this.state.mod - 1
+        if (mod == 0) mod++
         this.setState( state => {
             if (state.mod > 1) {
                 return {mod: state.mod - 1}
@@ -58,7 +66,7 @@ class InputWithBtns extends Component{
 
         } )
         this.updateText(mod)
-        this.props.setValue(this.props.dType, mod)
+        this.props.setValue(mod)
     }
 
     render() {

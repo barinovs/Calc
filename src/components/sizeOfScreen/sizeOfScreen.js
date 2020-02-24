@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
+import { chScreenH, chScreenW,  CH_SCREEN_H, CH_SCREEN_W} from '../../redux/actions'
+
 
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
@@ -17,11 +21,11 @@ class SizeOfScreen extends Component{
                 <label>Размер экрана</label>
                 <Row>
                     <Col lg="6">
-                        <InputWithBtns koef={0.32} setValue={this.props.setValue} dType='w'/>
+                        <InputWithBtns koef={0.32} setValue={this.props.chScreenW} mod={this.props.screenW}/>
                         <div>Ширина</div>
                     </Col>
                     <Col lg="6">
-                        <InputWithBtns koef={0.16} setValue={this.props.setValue} dType='h'/>
+                        <InputWithBtns koef={0.16} setValue={this.props.chScreenH} mod={this.props.screenH}/>
                         <div>Высота</div>
                     </Col>
                 </Row>
@@ -31,4 +35,19 @@ class SizeOfScreen extends Component{
     }
 
 }
-export default SizeOfScreen
+
+const mapStateToProps = (state) => {
+    return {
+         screenH: state.allData.screenH,
+         screenW: state.allData.screenW,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        chScreenH: bindActionCreators(chScreenH, dispatch),
+        chScreenW: bindActionCreators(chScreenW, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SizeOfScreen)
