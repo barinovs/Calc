@@ -1,0 +1,2 @@
+atom .
+yarn dev

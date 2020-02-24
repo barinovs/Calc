@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
+import { chModuleType, CH_MODULE_TYPE } from  '../../redux/actions'
 
 import OptionComponent from '../optionComponent/optionComponent'
 
@@ -25,7 +28,7 @@ class ModuleTypes extends Component{
                 <label>Тип модулей</label>
                 <Form.Control
                     as="select"
-                    onChange={ e => {this.props.setValue('mod_id', e.target.value)} }
+                    onChange={ e => {this.props.chModuleType(e.target.value)} }
                 >
                 {
                     moduleTypesArray.map( item => {
@@ -41,4 +44,17 @@ class ModuleTypes extends Component{
     }
 
 }
-export default ModuleTypes
+
+const mapStateToProps = (state) => {
+    return {
+         moduleType: state.moduleType
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        chModuleType: bindActionCreators(chModuleType, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModuleTypes)

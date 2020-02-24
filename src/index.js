@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from "react-redux";
+import store from "./redux/store/configureStore";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+
+// const store = configureStore();
 
 import {ModuleTypes} from './components'
 import {ExecutionTypesComponent} from './components'
@@ -180,27 +184,29 @@ class App extends Component {
 
     render() {
         return(
-            <Container>
-              <Row>
-                <Col lg="3">
-                    <ModuleTypes moduleTypesArray={moduleTypesArray} setValue={this.setValue}/>
-                    <ExecutionTypesComponent executionTypesArray={executionTypesArray} setValue={this.setValue}/>
-                </Col>
-                <Col lg="3">
-                    <SizeOfScreen setValue={this.setValue}/>
-                    <CheckboxComponent />
-                </Col>
-                <Col lg="2"><TypeOfControl setValue={this.setValue} typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
-                <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
-                <Col lg="2"><Sensors sensors={sensors}/></Col>
-              </Row>
-              <Row>
-                <Col>1 of 3</Col>
-                <Col>2 of 3</Col>
-                <Col>3 of 3</Col>
+            <Provider store={store}>
+                <Container>
+                  <Row>
+                    <Col lg="3">
+                        <ModuleTypes moduleTypesArray={moduleTypesArray} setValue={this.setValue}/>
+                        <ExecutionTypesComponent executionTypesArray={executionTypesArray} setValue={this.setValue}/>
+                    </Col>
+                    <Col lg="3">
+                        <SizeOfScreen setValue={this.setValue}/>
+                        <CheckboxComponent />
+                    </Col>
+                    <Col lg="2"><TypeOfControl setValue={this.setValue} typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
+                    <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
+                    <Col lg="2"><Sensors sensors={sensors}/></Col>
+                  </Row>
+                  <Row>
+                    <Col>1 of 3</Col>
+                    <Col>2 of 3</Col>
+                    <Col>3 of 3</Col>
 
-              </Row>
-            </Container>
+                  </Row>
+                </Container>
+            </Provider>
         )
 
     }
