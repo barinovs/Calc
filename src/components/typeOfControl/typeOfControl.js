@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
-import { chTypeOfControl, CH_TYPE_OF_CONTROL} from '../../redux/actions'
+import { chTypeOfControl1, chTypeOfControl2, CH_TYPE_OF_CONTROL_1} from '../../redux/actions'
 
 import RadioTypeOfControl from '../radioTypeOfControl/radioTypeOfControl'
 
@@ -11,8 +11,8 @@ class TypeOfControl extends Component{
         return(
             <div>
                 <label>Тип управления</label>
-                <RadioTypeOfControl typesOfControl={this.props.typesOfControl1} setValue={this.props.chTypeOfControl}/>
-                <RadioTypeOfControl typesOfControl={this.props.typesOfControl2} setValue={this.props.chTypeOfControl}/>
+                <RadioTypeOfControl typesOfControl={this.props.typesOfControl1} setValue={this.props.chTypeOfControl1}/>
+                <RadioTypeOfControl typesOfControl={this.props.typesOfControl2} setValue={this.props.chTypeOfControl2}/>
             </div>
         )
     }
@@ -37,7 +37,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        chTypeOfControl: bindActionCreators(chTypeOfControl, dispatch),
+        chTypeOfControl1: bindActionCreators(chTypeOfControl1, dispatch),
+        chTypeOfControl2: bindActionCreators(chTypeOfControl2, dispatch),
     }
 }
 

@@ -53,27 +53,28 @@ class CheckboxComponent extends Component{
         })
     }
 
-    render() {
-        if (this.state.checked ) {
-            return <IndicatorWithAfter
-                id = {this.props.id}
-                onClick={ (e) => {
-                                    this.props.changeCheck(e.target.id, !this.state.checked)
-                                    this.changeSelf()
-                                 }}
-            />
-        }else{
-            return (
-                <Indicator
+    render()
+        {
+            if (this.state.checked ) {
+                return <IndicatorWithAfter
+                    id = {this.props.id}
                     onClick={ (e) => {
-                                        this.props.changeCheck(e.target.id, !this.state.checked)
+                                        this.props.changeCheck(!this.state.checked)
                                         this.changeSelf()
                                      }}
-                    id = {this.props.id}
                 />
-            )
+            }else{
+                return (
+                    <Indicator
+                        onClick={ (e) => {
+                                            this.props.changeCheck(!this.state.checked)
+                                            this.changeSelf()
+                                         }}
+                        id = {this.props.id}
+                    />
+                )
+            }
         }
-    }
 
 }
 
