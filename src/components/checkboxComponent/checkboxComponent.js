@@ -55,19 +55,20 @@ class CheckboxComponent extends Component{
 
     render()
         {
-            if (this.state.checked ) {
+            if (this.props.checked ) {
                 return <IndicatorWithAfter
                     id = {this.props.id}
                     onClick={ (e) => {
-                                        this.props.changeCheck(!this.state.checked)
-                                        this.changeSelf()
+                                        this.props.changecheck(!this.props.checked)
+
                                      }}
+                    dis={this.props.dis}
                 />
             }else{
                 return (
                     <Indicator
                         onClick={ (e) => {
-                                            this.props.changeCheck(!this.state.checked)
+                                            this.props.changecheck(!this.props.checked)
                                             this.changeSelf()
                                          }}
                         id = {this.props.id}

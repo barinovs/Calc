@@ -2,37 +2,68 @@ import React, { Component } from 'react'
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
-import { chDT, chDV, chDL, CH_DT, CH_DV, CH_DL} from '../../redux/actions'
+import { chDT, chDV, chDL, setDisDT, CH_DT, CH_DV, CH_DL, SET_DIS_DT} from '../../redux/actions'
 import CheckboxGroup from '../checkboxGroup/checkboxGroup'
 import CheckboxComponent from '../checkboxComponent/checkboxComponent'
 
 
-// export default function Sensors({sensors}) {
-//     return(
-//         <div>
-//             <label>Датчики</label>
-//             <CheckboxComponent id="dt"/>
-//         </div>
-//     )
-// }
-
 class Sensors extends Component{
+
+    constructor(props) {
+        super(props)
+        this.clickSelf = this.clickSelf.bind(this)
+    }
+
+    clickSelf(type) {
+        const { chDT, chDV, chDL, setDisDT } = this.props
+
+        switch(type) {
+            case 'dt':
+                chDT(!this.props.dt.value)
+                break
+            case 'dv':
+                chDV(!this.props.dv.value)
+                if (!this.props.dv.value) {
+                    setDisDT(true)
+                    chDT(true)
+                }else{
+                    setDisDT(false)
+                }
+                break
+            case 'dl':
+                chDL(!this.props.dl.value)
+                break
+        }
+    }
+
     render() {
+        const { chDT, chDV, chDL, dt, dv, dl } = this.props
+        const classDT = (dt.dis)?"control dis":"control"
+
         return(
             <div>
                 <label>Датчики</label>
                 <br />
-                <label className="control">
+                <label
+                    className={classDT}
+                    onClick={ () => { this.clickSelf('dt') } }
+                >
                     Температура
-                    <CheckboxComponent id="dt" changeCheck={this.props.chDT}/>
+                    <CheckboxComponent checked={dt.value} id="dt" changecheck={chDT}/>
                 </label>
-                <label className="control">
+                <label
+                    className="control"
+                    onClick={ () => { this.clickSelf('dv')} }
+                >
                     Влажность
-                    <CheckboxComponent id="dv" changeCheck={this.props.chDV}/>
+                    <CheckboxComponent checked={dv.value} id="dv" changecheck={chDV}/>
                 </label>
-                <label className="control">
+                <label
+                    className="control"
+                    onClick={ () => { this.clickSelf('dl')} }
+                >
                     Яркость
-                    <CheckboxComponent id="dl" changeCheck={this.props.chDL}/>
+                    <CheckboxComponent checked={dl.value} id="dl" changecheck={chDL}/>
                 </label>
 
             </div>
@@ -42,9 +73,9 @@ class Sensors extends Component{
 
 const mapStateToProps = (state) => {
     return {
-         controller: state.allData.dt,
-         controller: state.allData.dv,
-         controller: state.allData.dl,
+         dt: state.allData.dt,
+         dv: state.allData.dv,
+         dl: state.allData.dl,
     }
 }
 
@@ -53,6 +84,7 @@ const mapDispatchToProps = (dispatch) => {
         chDT: bindActionCreators(chDT, dispatch),
         chDV: bindActionCreators(chDV, dispatch),
         chDL: bindActionCreators(chDL, dispatch),
+        setDisDT: bindActionCreators(setDisDT, dispatch),
     }
 }
 

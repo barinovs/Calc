@@ -7,6 +7,7 @@ export const CH_CONTROLLER = 'CH_CONTROLLER'
 export const CH_DT = 'CH_DT'
 export const CH_DV = 'CH_DV'
 export const CH_DL = 'CH_DL'
+export const SET_DIS_DT = 'SET_DIS_DT'
 
 export function chModuleType(moduleType) {
     return {
@@ -68,5 +69,13 @@ export function chDL(dl) {
     return {
         type: CH_DL,
         dl: dl
+    }
+}
+
+export function setDisDT(dis) {
+    console.log("action setDisDT ", dis )
+    return {
+        type: SET_DIS_DT,
+        dis: dis
     }
 }

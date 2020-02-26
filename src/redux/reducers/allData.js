@@ -1,4 +1,13 @@
-import { CH_MODULE_TYPE, CH_SCREEN_H, CH_SCREEN_W, CH_TYPE_OF_CONTROL_1, CH_TYPE_OF_CONTROL_2, CH_CONTROLLER, CH_DT, CH_DV, CH_DL } from  '../actions'
+import { CH_MODULE_TYPE,
+         CH_SCREEN_H,
+         CH_SCREEN_W,
+         CH_TYPE_OF_CONTROL_1,
+         CH_TYPE_OF_CONTROL_2,
+         CH_CONTROLLER,
+         CH_DT,
+         CH_DV,
+         CH_DL,
+         SET_DIS_DT} from  '../actions'
 
 const initialState = {
     moduleType: "1",
@@ -8,9 +17,18 @@ const initialState = {
     typeOfControl2: 'offline',
     controller: 'inside',
     maker: 'onbon',
-    dt: false,
-    dv: false,
-    dl: false,
+    dt: {
+        value: false,
+        dis: false
+    },
+    dv: {
+        value: false,
+        dis: false
+    },
+    dl: {
+        value: false,
+        dis: false
+    },
     video: false,
     executionType: 1
 }
@@ -43,15 +61,19 @@ export default function(state = initialState, action) {
             }
         case CH_DT:
             return {
-                ...state, dt: action.dt
+                ...state, dt: {...state.dt, value: action.dt}
             }
         case CH_DV:
             return {
-                ...state, dv: action.dv
+                ...state, dv: {...state.dv, value: action.dv}
             }
         case CH_DL:
             return {
-                ...state, dl: action.dl
+                ...state, dl: {...state.dl, value: action.dl}
+            }
+        case SET_DIS_DT:
+            return {
+                ...state, dt: {...state.dt, dis: action.dis}
             }
         default:
             return state;
