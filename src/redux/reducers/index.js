@@ -4,7 +4,8 @@ import { combineReducers } from 'redux'
 // import filter from './filter'
 // import prices from './prices'
 import allData from './allData'
+import moduleTypes from './moduleTypes'
 
-const rootReducer = combineReducers({ allData })
+const rootReducer = combineReducers({ allData, moduleTypes })
 
 export default rootReducer

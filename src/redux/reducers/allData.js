@@ -7,7 +7,8 @@ import { CH_MODULE_TYPE,
          CH_DT,
          CH_DV,
          CH_DL,
-         SET_DIS_DT} from  '../actions'
+         SET_DIS_DT,
+         CH_VIDEO} from  '../actions'
 
 const initialState = {
     moduleType: "1",
@@ -74,6 +75,10 @@ export default function(state = initialState, action) {
         case SET_DIS_DT:
             return {
                 ...state, dt: {...state.dt, dis: action.dis}
+            }
+        case CH_VIDEO:
+            return {
+                ...state, video: action.video
             }
         default:
             return state;

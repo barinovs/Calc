@@ -16,6 +16,7 @@ import {TypeOfControl} from './components'
 import {ControllerComponent} from './components'
 import {Sensors} from './components'
 import {CheckboxComponent} from './components'
+import {SupportVideoComponent} from './components'
 
 const moduleTypesArray = [
     {
@@ -193,17 +194,11 @@ class App extends Component {
                     </Col>
                     <Col lg="3">
                         <SizeOfScreen setValue={this.setValue}/>
-                        <CheckboxComponent />
+                        <SupportVideoComponent />
                     </Col>
                     <Col lg="2"><TypeOfControl setValue={this.setValue} typesOfControl1={typesOfControl1} typesOfControl2={typesOfControl2}/></Col>
                     <Col lg="2"><ControllerComponent typesOfControllers={typesOfControllers}/></Col>
                     <Col lg="2"><Sensors sensors={sensors}/></Col>
-                  </Row>
-                  <Row>
-                    <Col>1 of 3</Col>
-                    <Col>2 of 3</Col>
-                    <Col>3 of 3</Col>
-
                   </Row>
                 </Container>
             </Provider>

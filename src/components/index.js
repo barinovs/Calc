@@ -7,8 +7,9 @@ import ControllerComponent from './controller/controller'
 import Sensors from './sensors/sensors'
 import ExecutionTypesComponent from './executionTypesComponent/executionTypesComponent'
 import CheckboxComponent from './checkboxComponent/checkboxComponent'
+import SupportVideoComponent from './supportVideoComponent/supportVideoComponent'
 
 
 
 
-export {ModuleTypes, SizeOfScreen, InputWithBtns, TypeOfControl, RadioTypeOfControl, ControllerComponent, Sensors, ExecutionTypesComponent, CheckboxComponent}
+export {ModuleTypes, SizeOfScreen, InputWithBtns, TypeOfControl, RadioTypeOfControl, ControllerComponent, Sensors, ExecutionTypesComponent, CheckboxComponent, SupportVideoComponent}

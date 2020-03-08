@@ -8,6 +8,9 @@ export const CH_DT = 'CH_DT'
 export const CH_DV = 'CH_DV'
 export const CH_DL = 'CH_DL'
 export const SET_DIS_DT = 'SET_DIS_DT'
+export const CH_VIDEO = 'CH_VIDEO'
+export const SET_MODULE_TYPES = 'SET_MODULE_TYPES'
+
 
 export function chModuleType(moduleType) {
     return {
@@ -77,5 +80,20 @@ export function setDisDT(dis) {
     return {
         type: SET_DIS_DT,
         dis: dis
+    }
+}
+
+export function chVideo(video) {
+    console.log("action chVideo ", video )
+    return {
+        type: CH_VIDEO,
+        video: video
+    }
+}
+
+export function setModuleTypes(moduleTypes) {
+    return {
+        type: SET_MODULE_TYPES,
+        moduleTypes: moduleTypes
     }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
-import { chModuleType, CH_MODULE_TYPE } from  '../../redux/actions'
+import { chModuleType, CH_MODULE_TYPE, setModuleTypes, SET_MODULE_TYPES } from  '../../redux/actions'
+import axios from 'axios'
 
 import OptionComponent from '../optionComponent/optionComponent'
 
@@ -10,6 +11,18 @@ import Form from 'react-bootstrap/Form'
 class ModuleTypes extends Component{
     constructor(props) {
         super(props)
+        this.state = {moduleTypes: []}
+    }
+
+    componentDidMount() {
+        axios.get('http://calc.loc/api/getModules.php', {
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            console.log("response ", response.data);
+            this.setState({moduleTypes: response.data})
+            this.props.setModuleTypes(response.data)
+        })
     }
 
     render() {
@@ -53,7 +66,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        chModuleType: bindActionCreators(chModuleType, dispatch)
+        chModuleType: bindActionCreators(chModuleType, dispatch),
+        setModuleTypes: bindActionCreators(setModuleTypes, dispatch),
     }
 }
 
