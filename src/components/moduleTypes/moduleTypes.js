@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
-import { chModuleType, CH_MODULE_TYPE, setModuleTypes, SET_MODULE_TYPES } from  '../../redux/actions'
+import { chModuleType, setModuleTypes, chScreenH, chScreenW } from  '../../redux/actions'
 import axios from 'axios'
 
 import OptionComponent from '../optionComponent/optionComponent'
@@ -26,12 +26,15 @@ class ModuleTypes extends Component{
     }
 
     render() {
-        const { moduleTypesArray } = this.props
+        const { moduleTypesArray, moduleTypes } = this.props
 
         const renderOptions = options => {
           return options.map(option => {
             return (
-              <OptionComponent key={option.id} option={option}/>
+              <OptionComponent
+                  key={option.id}
+                  option={option}
+              />
             );
           });
         };
@@ -41,15 +44,13 @@ class ModuleTypes extends Component{
                 <label>Тип модулей</label>
                 <Form.Control
                     as="select"
-                    onChange={ e => {this.props.chModuleType(e.target.value)} }
+                    onChange={ e => {
+                        let dataset = e.target.options[e.target.selectedIndex].dataset;
+                        this.props.chModuleType(e.target.value, dataset.width, dataset.height)
+                    } }
                 >
                 {
-                    moduleTypesArray.map( item => {
-                        return (
-                            <optgroup key={item.id} label={item.groupName}>
-                                {renderOptions(item.items)}
-                            </optgroup>
-                    )} )
+                    renderOptions(moduleTypes)
                 }
                 </Form.Control>
             </div>
@@ -60,7 +61,8 @@ class ModuleTypes extends Component{
 
 const mapStateToProps = (state) => {
     return {
-         moduleType: state.moduleType
+         moduleType: state.moduleType,
+         moduleTypes: state.moduleTypes
     }
 }
 
@@ -68,6 +70,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         chModuleType: bindActionCreators(chModuleType, dispatch),
         setModuleTypes: bindActionCreators(setModuleTypes, dispatch),
+        chScreenH: bindActionCreators(chScreenH, dispatch),
+        chScreenW: bindActionCreators(chScreenW, dispatch)
     }
 }
 

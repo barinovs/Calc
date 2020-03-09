@@ -8,10 +8,16 @@ import { CH_MODULE_TYPE,
          CH_DV,
          CH_DL,
          SET_DIS_DT,
-         CH_VIDEO} from  '../actions'
+         CH_VIDEO,
+         CH_TOTAL_W,
+         CH_TOTAL_H} from  '../actions'
 
 const initialState = {
     moduleType: "1",
+    moduleW: 320,
+    moduleH: 160,
+    totalW: 0,
+    totalH: 0,
     screenW: 9,
     screenH: 3,
     typeOfControl1: 'USB',
@@ -38,7 +44,10 @@ export default function(state = initialState, action) {
     switch(action.type) {
         case CH_MODULE_TYPE:
             return {
-                ...state, moduleType: action.moduleType
+                ...state,
+                    moduleType: action.moduleType,
+                    moduleW: action.moduleW,
+                    moduleH: action.moduleH
             }
         case CH_SCREEN_H:
             return {
@@ -79,6 +88,14 @@ export default function(state = initialState, action) {
         case CH_VIDEO:
             return {
                 ...state, video: action.video
+            }
+        case CH_TOTAL_W:
+            return {
+                ...state, totalW: action.totalW
+            }
+        case CH_TOTAL_H:
+            return {
+                ...state, totalH: action.totalH
             }
         default:
             return state;

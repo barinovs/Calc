@@ -25,6 +25,13 @@ class InputWithBtns extends Component{
         this.updateText(this.props.mod)
     }
 
+    componentDidUpdate() {
+        const { mod, koef } = this.props
+        let inpText = (mod * koef).toFixed(3)
+        console.log('inpText ', inpText);
+        this.input.current.value = inpText
+    }
+
     changeInpText(textInp) {
         console.log('textInp ', textInp);
         let mod = (textInp / this.props.koef).toFixed()
@@ -70,7 +77,7 @@ class InputWithBtns extends Component{
     }
 
     render() {
-        const { mod, inpText } = this.state
+        const { mod, inpText, totalW, totalH } = this.state
         return(
             <div>
                 <div className="input-group my-touchspin bootstrap-touchspin-injected">

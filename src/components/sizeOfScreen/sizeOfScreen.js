@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
-import { chScreenH, chScreenW,  CH_SCREEN_H, CH_SCREEN_W} from '../../redux/actions'
+import { chScreenH, chScreenW, chTotalW, chTotalH} from '../../redux/actions'
 
 
 import Form from 'react-bootstrap/Form'
@@ -16,16 +16,27 @@ class SizeOfScreen extends Component{
     }
 
     render() {
+        const {moduleW, moduleH, totalW, totalH } = this.props
         return(
             <div>
                 <label>Размер экрана</label>
                 <Row>
                     <Col lg="6">
-                        <InputWithBtns koef={0.32} setValue={this.props.chScreenW} mod={this.props.screenW}/>
+                        <InputWithBtns
+                            koef={moduleW/1000}
+                            setValue={this.props.chScreenW}
+                            mod={this.props.screenW}
+                            totalW={totalW}
+                        />
                         <div>Ширина</div>
                     </Col>
                     <Col lg="6">
-                        <InputWithBtns koef={0.16} setValue={this.props.chScreenH} mod={this.props.screenH}/>
+                        <InputWithBtns
+                            koef={moduleH/1000}
+                            setValue={this.props.chScreenH}
+                            mod={this.props.screenH}
+                            totalH={totalH}
+                        />
                         <div>Высота</div>
                     </Col>
                 </Row>
@@ -40,6 +51,10 @@ const mapStateToProps = (state) => {
     return {
          screenH: state.allData.screenH,
          screenW: state.allData.screenW,
+         moduleW: state.allData.moduleW,
+         moduleH: state.allData.moduleH,
+         totalW: state.allData.totalW,
+         totalH: state.allData.totalH,
     }
 }
 
@@ -47,6 +62,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         chScreenH: bindActionCreators(chScreenH, dispatch),
         chScreenW: bindActionCreators(chScreenW, dispatch),
+        chTotalW: bindActionCreators(chTotalW, dispatch),
+        chTotalH: bindActionCreators(chTotalH, dispatch),
     }
 }
 

@@ -10,12 +10,16 @@ export const CH_DL = 'CH_DL'
 export const SET_DIS_DT = 'SET_DIS_DT'
 export const CH_VIDEO = 'CH_VIDEO'
 export const SET_MODULE_TYPES = 'SET_MODULE_TYPES'
+export const CH_TOTAL_W = 'CH_TOTAL_W'
+export const CH_TOTAL_H = 'CH_TOTAL_H'
 
 
-export function chModuleType(moduleType) {
+export function chModuleType(moduleType, moduleW, moduleH) {
     return {
         type: CH_MODULE_TYPE,
-        moduleType: moduleType
+        moduleType: moduleType,
+        moduleW: moduleW,
+        moduleH: moduleH,
     }
 }
 
@@ -95,5 +99,19 @@ export function setModuleTypes(moduleTypes) {
     return {
         type: SET_MODULE_TYPES,
         moduleTypes: moduleTypes
+    }
+}
+
+export function chTotalW(totalW) {
+    return {
+        type: CH_TOTAL_W,
+        moduleTypes: totalW
+    }
+}
+
+export function chTotalH(totalH) {
+    return {
+        type: CH_TOTAL_H,
+        moduleTypes: totalH
     }
 }
